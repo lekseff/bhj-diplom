@@ -43,6 +43,12 @@ class Sidebar {
             App.getModal('register').open()
           } else {
             console.log("Нажата Выход")
+            User.logout((err, response) => {
+              console.log('logout', response)
+              if (response.success) {
+                App.setState('init')
+              }
+            })
             // При нажатии на кнопку «Выйти» необходимо вызвать метод User.logout и после успешного выхода (response.success = true), нужно вызвать App.setState( 'init' )
           }
         })

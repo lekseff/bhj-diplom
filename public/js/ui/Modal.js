@@ -35,7 +35,7 @@ class Modal {
    * */
   onClose(e) {
     // const activeModal = e.target.closest('div.modal')
-    console.log('onClose')
+    // console.log('onClose')
     this.close()
   }
   /**
@@ -43,14 +43,14 @@ class Modal {
    * со значением «block»
    * */
   open() {
-    console.log('open')
+    // console.log('open')
     this.element.style.display = "block"
   }
   /**
    * Закрывает окно: удаляет CSS-свойство display
    * */
   close() {
-    console.log('close')
+    // console.log('close')
     this.element.style.display = 'none'
 
   }
