@@ -4,7 +4,7 @@
 class App {
   /**
    * С вызова этого метода начинается работа всего приложения
-   * Он производит перваоначальную настройку всех
+   * Он производит первоначальную настройку всех
    * страниц, форм, виджетов, всплывающих окон, а также
    * боковой колонки
    * */
@@ -26,7 +26,7 @@ class App {
    * Извлекает информацию о текущем пользователе
    * используя User.fetch(). В случае, если пользователь
    * авторизован, необходимо установить состояние
-   * App.setState( 'user-logged' ).
+   * App.setState('user-logged').
    * Если пользователь не авторизован, необходимо установить
    * состояние 'init'
    * */
@@ -93,7 +93,7 @@ class App {
    * Возвращает всплывающее окно
    * Обращается к объекту App.modals и извлекает
    * из него свойство modalName:
-   * App.getModal( 'login' ); // извелекает App.modals.login
+   * App.getModal( 'login' ); // извлекает App.modals.login
    * */
   static getModal(modalName) {
     return this.modals[modalName];
@@ -103,7 +103,7 @@ class App {
    * Возвращает страницу
    * Обращается к объекту App.pages и извлекает
    * из него свойство pageName:
-   * App.getPage( 'transactions' ); // извелекает App.pages.transactions
+   * App.getPage( 'transactions' ); // извлекает App.pages.transactions
    * */
   static getPage(pageName) {
     return this.pages[pageName];
@@ -113,7 +113,7 @@ class App {
    * Возвращает виджет по названию
    * Обращается к объекту App.widgets и извлекает
    * из него свойство widgetName:
-   * App.getWidget( 'transactions' ); // извелекает App.widgets.transactions
+   * App.getWidget( 'transactions' ); // извлекает App.widgets.transactions
    * */
   static getWidget(widgetName) {
     return this.widgets[widgetName];
@@ -123,7 +123,7 @@ class App {
    * Возвращает форму по названию
    * Обращается к объекту App.forms и извлекает
    * из него свойство formName:
-   * App.getWidget( 'transactions' ); // извелекает App.forms.transactions
+   * App.getWidget( 'transactions' ); // извлекает App.forms.transactions
    * */
   static getForm(formName) {
     return this.forms[formName];
@@ -195,7 +195,7 @@ class App {
   }
 
   /**
-   * Вызвает метод update() у виджетов
+   * Вызывает метод update() у виджетов
    * accounts и user
    * */
   static updateWidgets() {

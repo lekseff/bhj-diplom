@@ -18,17 +18,34 @@ class Sidebar {
    * при нажатии на кнопку .sidebar-toggle
    * */
   static initToggleButton() {
-
+    this.button = document.querySelector('.sidebar-toggle')
+    this.button.addEventListener('click', () => {
+      document.body.classList.toggle('sidebar-collapse')
+      document.body.classList.toggle('sidebar-open')
+    })
   }
 
   /**
    * При нажатии на кнопку входа, показывает окно входа
    * (через найденное в App.getModal)
-   * При нажатии на кнопку регастрации показывает окно регистрации
+   * При нажатии на кнопку регистрации показывает окно регистрации
    * При нажатии на кнопку выхода вызывает User.logout и по успешному
-   * выходу устанавливает App.setState( 'init' )
+   * выходу устанавливает App.setState('init')
    * */
   static initAuthLinks() {
+    document.querySelectorAll('#sidebar-menu li a')
+      .forEach(elem => {
+        elem.addEventListener('click', () => {
 
+          if (elem.parentElement.classList.contains('menu-item_login')) {
+            App.getModal('login').open()
+          } else if (elem.parentElement.classList.contains('menu-item_register')) {
+            App.getModal('register').open()
+          } else {
+            console.log("Нажата Выход")
+            // При нажатии на кнопку «Выйти» необходимо вызвать метод User.logout и после успешного выхода (response.success = true), нужно вызвать App.setState( 'init' )
+          }
+        })
+      })
   }
 }
