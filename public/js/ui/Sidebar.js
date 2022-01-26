@@ -44,7 +44,6 @@ class Sidebar {
           } else {
             console.log("Нажата Выход")
             User.logout((err, response) => {
-              console.log('logout', response)
               if (response.success) {
                 App.setState('init')
               }

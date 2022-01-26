@@ -5,6 +5,18 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
+    },
+    {
+      "name": "Пиво",
+      "email": "lekseff@gmail.com",
+      "password": "1",
+      "id": "6nfuckyvb66dv"
+    },
+    {
+      "name": "Пиво",
+      "email": "lelik585@bk.ru",
+      "password": "123456",
+      "id": "6nf7vskyvb7sqj"
     }
   ],
   "accounts": [

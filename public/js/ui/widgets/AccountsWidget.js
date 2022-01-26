@@ -13,8 +13,10 @@ class AccountsWidget {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
-  constructor( element ) {
+  constructor(element) {
+    this.element = element
 
+    this.registerEvents()
   }
 
   /**
@@ -25,7 +27,11 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-
+    this.element.querySelector('.create-account')
+      .addEventListener('click', ()=> {
+        App.getModal('createAccount').open()
+        console.log('Добавить')
+      })
   }
 
   /**
@@ -39,7 +45,17 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
+    const currentUser = User.current()
 
+    console.log(User.current())
+
+    if(currentUser) {
+      Account.list(currentUser, (err, response)=> {
+        if (response && response.success) {
+
+        }
+      })
+    }
   }
 
   /**
@@ -56,7 +72,7 @@ class AccountsWidget {
    * Устанавливает текущему выбранному элементу счёта
    * класс .active. Удаляет ранее выбранному элементу
    * счёта класс .active.
-   * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
+   * Вызывает App.showPage('transactions', {account_id: id_счёта});
    * */
   onSelectAccount( element ) {
 
