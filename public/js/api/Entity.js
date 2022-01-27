@@ -11,7 +11,7 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static list(data, callback){
-    // console.log('list ', data)
+    console.log('Entity list')
     createRequest({
       url: this.URL + '',
       method: 'GET',
@@ -30,6 +30,7 @@ class Entity {
    * что наследуется от Entity)
    * */
   static create(data, callback) {
+    console.log('Entity create')
     createRequest({
       url: this.URL,
       method: 'PUT',

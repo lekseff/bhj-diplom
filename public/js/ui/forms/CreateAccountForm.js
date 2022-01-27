@@ -18,6 +18,7 @@ class CreateAccountForm extends AsyncForm {
         App.update()
       } else {
         console.error(response.error)
+        alert(response.error)
       }
     })
   }

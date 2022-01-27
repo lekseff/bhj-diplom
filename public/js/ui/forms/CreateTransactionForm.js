@@ -9,6 +9,8 @@ class CreateTransactionForm extends AsyncForm {
    * */
   constructor(element) {
     super(element)
+    this.renderAccountsList()
+
   }
 
   /**
@@ -16,7 +18,20 @@ class CreateTransactionForm extends AsyncForm {
    * Обновляет в форме всплывающего окна выпадающий список
    * */
   renderAccountsList() {
+    let fragment = new DocumentFragment()
 
+    Account.list({}, (err, response)=> {
+      if(response && response.success) {
+        response.data.forEach(elem => {
+          let optionsItem = document.createElement('option')
+          optionsItem.setAttribute('value', `${elem.id}`)
+          optionsItem.innerText = elem.name
+          fragment.append(optionsItem)
+        })
+      }
+      // console.log('render opt:', this.element.querySelector('.accounts-select'))
+      this.element.querySelector('.accounts-select').prepend(fragment)
+    })
   }
 
   /**

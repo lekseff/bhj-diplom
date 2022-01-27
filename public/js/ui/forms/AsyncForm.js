@@ -13,9 +13,13 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
-    this.element = element
+    if (element) {
+      this.element = element
+      this.registerEvents()
+    } else {
+      throw new Error('Передан не верный элемент (AsyncForm)')
+    }
 
-    this.registerEvents()
   }
 
   /**
@@ -27,8 +31,6 @@ class AsyncForm {
       event.preventDefault()
       this.submit()
     })
-
-
   }
 
   /**
@@ -41,14 +43,14 @@ class AsyncForm {
   getData() {
     const data = {}
     const formData = new FormData(this.element)
-    for(let elem of formData) {
+    for (let elem of formData) {
       const key = elem[0]
       data[key] = elem[1]
     }
     return data
   }
 
-  onSubmit(options){
+  onSubmit(options) {
 
   }
 

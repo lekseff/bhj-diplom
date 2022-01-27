@@ -3,7 +3,7 @@
  * на сервер.
  * */
 const createRequest = (options = {}) => {
-  console.log('Параметры запроса: ', options)
+  console.log('Начальные параметры запроса: ', options)
 
   const xhr = new XMLHttpRequest()
   xhr.responseType = options.responseType
@@ -11,7 +11,7 @@ const createRequest = (options = {}) => {
 
   // Для получения GET
   if(options.method === 'GET') {
-    console.log('Вызван GET')
+    // console.log('Вызван GET')
 
     let paramString = ''
     for(let elem in options.data) {
@@ -30,6 +30,9 @@ const createRequest = (options = {}) => {
     }
     xhr.send()
   } else {
+
+
+
 
     // для POST/PUT login/register
     // if(options.method === 'POST') {

@@ -41,14 +41,12 @@ class Sidebar {
             App.getModal('login').open()
           } else if (elem.parentElement.classList.contains('menu-item_register')) {
             App.getModal('register').open()
-          } else {
-            console.log("Нажата Выход")
+          } else if (elem.parentElement.classList.contains('menu-item_logout')) {
             User.logout((err, response) => {
               if (response.success) {
                 App.setState('init')
               }
             })
-            // При нажатии на кнопку «Выйти» необходимо вызвать метод User.logout и после успешного выхода (response.success = true), нужно вызвать App.setState( 'init' )
           }
         })
       })

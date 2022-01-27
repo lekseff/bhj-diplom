@@ -14,13 +14,14 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element) {
-    try {
+    if (element) {
       this.element = element
-      this.update()
       this.registerEvents()
-    } catch (err) {
-      console.error('Элемент не существует', err.message)
+      this.update()
+    } else {
+      throw new Error('Передан не верный элемент (AccountsWidget)')
     }
+
 
   }
 
@@ -58,6 +59,7 @@ class AccountsWidget {
   update() {
     const currentUser = User.current()
     if (currentUser) {
+      console.log('AccountsWidget Update')
       Account.list(currentUser, (err, response) => {
         if (response && response.success) {
           this.clear()
@@ -91,10 +93,10 @@ class AccountsWidget {
   onSelectAccount(element) {
     this.element.querySelectorAll('.account')
       .forEach(elem => {
-      if (elem.classList.contains('active')) {
-        elem.classList.remove('active')
-      }
-    })
+        if (elem.classList.contains('active')) {
+          elem.classList.remove('active')
+        }
+      })
     const userId = User.current().id
     const accountId = element.dataset.id
     element.classList.add('active')

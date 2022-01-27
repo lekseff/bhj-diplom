@@ -21,8 +21,6 @@ class User {
    * */
   static unsetCurrent() {
     localStorage.removeItem('user')
-    //или
-    // localStorage.setItem('user', JSON.stringify(''))
   }
 
   /**
@@ -32,6 +30,7 @@ class User {
   static current() {
     const saveUser = localStorage.getItem('user')
     if (saveUser) {
+      console.log('User.current', Boolean(saveUser), saveUser)
       return JSON.parse(saveUser)
     }
     return false
@@ -42,14 +41,20 @@ class User {
    * авторизованном пользователе.
    * */
   static fetch(callback) {
-    // createRequest({
-    //   url: this.URL + '/current',
-    //   method: 'GET',
-    //   responseType: 'json',
-    //   callback: (err, response) => {
-    //
-    //   }
-    // })
+    createRequest({
+      url: this.URL + '/current',
+      method: 'GET',
+      responseType: 'json',
+      callback: (err, response) => {
+        if (response.success) {
+          User.setCurrent(response.user)
+        } else {
+          User.unsetCurrent()
+        }
+        console.log('Ответ fetch:', response)
+        callback(err, response)
+      }
+    })
   }
 
   /**
@@ -60,7 +65,6 @@ class User {
    * */
   static login(data, callback) {
     createRequest({
-      // url: this.URL + '/login',
       url: this.URL + '/login',
       method: 'POST',
       responseType: 'json',
@@ -87,7 +91,7 @@ class User {
       responseType: 'json',
       data,
       callback: (err, response) => {
-        if (response && response.user) {
+        if (response && response.success) {
           User.setCurrent(response.user)
         }
         callback(err, response)
