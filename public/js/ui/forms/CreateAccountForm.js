@@ -10,9 +10,10 @@ class CreateAccountForm extends AsyncForm {
    * */
   onSubmit(data) {
     // data {name: 123}
+    console.log('CreateAccountForm')
     Account.create(data, (err, response) => {
-      console.log('Ответ на создание счета: ', response)
-      if (response && response.success) {
+      // console.log('Ответ на создание счета: ', response)
+      if (response.success) {
         App.getForm('createAccount').element.reset()
         App.getModal('createAccount').close()
         App.update()

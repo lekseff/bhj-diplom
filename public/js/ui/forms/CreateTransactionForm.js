@@ -19,7 +19,7 @@ class CreateTransactionForm extends AsyncForm {
    * */
   renderAccountsList() {
     let fragment = new DocumentFragment()
-
+    //Тут какая-то ерунда
     Account.list({}, (err, response)=> {
       if(response && response.success) {
         response.data.forEach(elem => {

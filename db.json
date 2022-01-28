@@ -5,12 +5,6 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
-    },
-    {
-      "name": "Алекс",
-      "email": "lekseff@gmail.com",
-      "password": "123",
-      "id": "6nf8sskyx1iht7"
     }
   ],
   "accounts": [
@@ -30,29 +24,9 @@
       "id": "3"
     },
     {
-      "name": "Пиво",
-      "user_id": "6nf8sskyx1iht7",
-      "id": "6nf9hkkyx1iz5m"
-    },
-    {
-      "name": "Хлеб",
-      "user_id": "6nf8sskyx1iht7",
-      "id": "6nf1o8kyx1j8wn"
-    },
-    {
-      "name": "demo",
+      "name": "Алексей",
       "user_id": "1",
-      "id": "6nfa8okyx1rble"
-    },
-    {
-      "name": "123",
-      "user_id": "1",
-      "id": "6nf39okyx2d6fs"
-    },
-    {
-      "name": "прр",
-      "user_id": "1",
-      "id": "6nf31gkyx2vwkq"
+      "id": "1estr78x4kyyv1koi"
     }
   ],
   "transactions": [
@@ -192,40 +166,13 @@
       "user_id": "1"
     },
     {
-      "id": "1estr7a1gkyxg53i1",
+      "id": "1estr79fgkyyv1v6t",
       "type": "income",
-      "name": "Алексей",
-      "sum": 100,
-      "account_id": "1",
-      "user_id": "1",
-      "created_at": "2022-01-27T20:46:16.824Z"
-    },
-    {
-      "id": "1estr7aickyxg6llm",
-      "type": "income",
-      "name": "weee",
-      "sum": 4444,
-      "account_id": "6nfa8okyx1rble",
-      "user_id": "1",
-      "created_at": "2022-01-27T20:47:26.937Z"
-    },
-    {
-      "id": "1estr77ogkyxg75ce",
-      "type": "income",
-      "name": "Алексей",
+      "name": "Сергей",
       "sum": 555,
-      "account_id": "3",
+      "account_id": "2",
       "user_id": "1",
-      "created_at": "2022-01-27T20:47:52.525Z"
-    },
-    {
-      "id": "1estr793skyxgali6",
-      "type": "income",
-      "name": "sdsd",
-      "sum": 555,
-      "account_id": "6nfa8okyx1rble",
-      "user_id": "1",
-      "created_at": "2022-01-27T20:50:33.437Z"
+      "created_at": "2022-01-28T20:31:26.500Z"
     }
   ]
 }
