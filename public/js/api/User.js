@@ -29,8 +29,8 @@ class User {
    * */
   static current() {
     const saveUser = localStorage.getItem('user')
+    console.log('User.current', Boolean(saveUser), saveUser)
     if (saveUser) {
-      console.log('User.current', Boolean(saveUser), saveUser)
       return JSON.parse(saveUser)
     }
     return false

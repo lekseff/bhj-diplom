@@ -41,6 +41,12 @@ class CreateTransactionForm extends AsyncForm {
    * в котором находится форма
    * */
   onSubmit(data) {
-
+    console.log('Transaction', data)
+    Transaction.create(data, (err, response) => {
+      console.log('response', response)
+      if (response.success) {
+        App.update()
+      }
+    })
   }
 }

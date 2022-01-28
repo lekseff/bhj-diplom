@@ -100,6 +100,7 @@ class AccountsWidget {
     const userId = User.current().id
     const accountId = element.dataset.id
     element.classList.add('active')
+    console.log({[userId]: accountId})
     App.showPage('transactions', {[userId]: accountId})
   }
 
