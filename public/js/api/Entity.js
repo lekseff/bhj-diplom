@@ -13,7 +13,7 @@ class Entity {
   static list(data, callback){
     console.log('Entity list')
     createRequest({
-      url: this.URL + '',
+      url: this.URL,
       method: 'GET',
       responseType: 'json',
       data,

@@ -5,12 +5,6 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
-    },
-    {
-      "name": "Алекс",
-      "email": "lekseff@gmail.com",
-      "password": "123",
-      "id": "6nf8sskyx1iht7"
     }
   ],
   "accounts": [
@@ -28,31 +22,6 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
-    },
-    {
-      "name": "Пиво",
-      "user_id": "6nf8sskyx1iht7",
-      "id": "6nf9hkkyx1iz5m"
-    },
-    {
-      "name": "Хлеб",
-      "user_id": "6nf8sskyx1iht7",
-      "id": "6nf1o8kyx1j8wn"
-    },
-    {
-      "name": "demo",
-      "user_id": "1",
-      "id": "6nfa8okyx1rble"
-    },
-    {
-      "name": "123",
-      "user_id": "1",
-      "id": "6nf39okyx2d6fs"
-    },
-    {
-      "name": "прр",
-      "user_id": "1",
-      "id": "6nf31gkyx2vwkq"
     }
   ],
   "transactions": [
