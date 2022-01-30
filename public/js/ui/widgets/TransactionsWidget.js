@@ -12,13 +12,12 @@ class TransactionsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor(element) {
-    try {
+    if (element) {
       this.element = element
       this.registerEvents()
-    } catch (err) {
-      console.error(err.message)
+    } else {
+      throw new Error('Передан не верный элемент (TransactionsWidget)')
     }
-
   }
 
   /**
@@ -29,7 +28,7 @@ class TransactionsWidget {
    * */
   registerEvents() {
     this.element.addEventListener('click', (event) => {
-      if(event.target.classList.contains('create-income-button')) {
+      if (event.target.classList.contains('create-income-button')) {
         App.getModal('newIncome').open()
       } else if (event.target.classList.contains('create-expense-button')) {
         App.getModal('newExpense').open()

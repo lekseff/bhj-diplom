@@ -9,8 +9,7 @@ class CreateTransactionForm extends AsyncForm {
    * */
   constructor(element) {
     super(element)
-    this.renderAccountsList()
-
+    // this.renderAccountsList()
   }
 
   /**
@@ -19,9 +18,8 @@ class CreateTransactionForm extends AsyncForm {
    * */
   renderAccountsList() {
     let fragment = new DocumentFragment()
-    //Тут какая-то ерунда
-    Account.list({}, (err, response)=> {
-      if(response && response.success) {
+    Account.list({}, (err, response) => {
+      if (response.success) {
         response.data.forEach(elem => {
           let optionsItem = document.createElement('option')
           optionsItem.setAttribute('value', `${elem.id}`)
@@ -29,8 +27,13 @@ class CreateTransactionForm extends AsyncForm {
           fragment.append(optionsItem)
         })
       }
-      // console.log('render opt:', this.element.querySelector('.accounts-select'))
-      this.element.querySelector('.accounts-select').prepend(fragment)
+      const select = this.element.querySelector('.accounts-select')
+      // Очистка списка
+      while (select.firstChild) {
+        select.removeChild(select.firstChild)
+      }
+      //Добавление элементов
+      select.prepend(fragment)
     })
   }
 
@@ -41,11 +44,18 @@ class CreateTransactionForm extends AsyncForm {
    * в котором находится форма
    * */
   onSubmit(data) {
-    console.log('Transaction', data)
+    const type = data.type[0].toUpperCase() + data.type.slice(1)
     Transaction.create(data, (err, response) => {
-      console.log('response', response)
       if (response.success) {
+        // Закрывает активное окно
+        App.getModal(`new${type}`).close()
+        // Сбрасываем форму
+        App.getForm(`create${type}`).element.reset()
+        // Обовляем App
         App.update()
+      } else {
+        console.error(response.error)
+        alert(response.error)
       }
     })
   }

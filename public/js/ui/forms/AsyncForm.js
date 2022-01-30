@@ -19,7 +19,6 @@ class AsyncForm {
     } else {
       throw new Error('Передан не верный элемент (AsyncForm)')
     }
-
   }
 
   /**

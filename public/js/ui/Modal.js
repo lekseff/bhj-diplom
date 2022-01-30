@@ -18,9 +18,6 @@ class Modal {
     } else {
       throw  new Error('Передан неверный элемент (Modal)')
     }
-
-
-
   }
 
   /**
@@ -42,6 +39,7 @@ class Modal {
   onClose(e) {
     this.close()
   }
+
   /**
    * Открывает окно: устанавливает CSS-свойство display
    * со значением «block»
@@ -49,11 +47,11 @@ class Modal {
   open() {
     this.element.style.display = "block"
   }
+
   /**
    * Закрывает окно: удаляет CSS-свойство display
    * */
   close() {
     this.element.style.display = 'none'
-
   }
 }

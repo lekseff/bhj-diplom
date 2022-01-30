@@ -15,9 +15,8 @@ class UserWidget {
     if (element) {
       this.element = element
     } else {
-      throw new Error('Переда не верный элемент (UserWidget)')
+      throw new Error('Передан не верный элемент (UserWidget)')
     }
-
   }
 
   /**

@@ -17,6 +17,7 @@ class LoginForm extends AsyncForm {
         App.setState('user-logged')   // Меняет страницу, user залогинился
       } else {
         console.error(response.error)
+        alert(response.error)
       }
     })
   }

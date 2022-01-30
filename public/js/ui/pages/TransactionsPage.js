@@ -34,15 +34,19 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
-    console.log('TransactionsPage', this.element)
+    // console.log('TransactionsPage', this.element)
     this.element.querySelector('.remove-account').addEventListener('click', () => {
+      // console.log('Удалить счет')
       this.removeAccount()
     })
-    this.element.querySelector('.content').addEventListener('click', (event) => {
-      console.log('Клик по списку', event)
-      // this.removeTransaction(id)
-    })
 
+    this.element.querySelector('.content').addEventListener('click', (event) => {
+      // console.log('Клик по списку', event.target.closest('button.transaction__remove'))
+      const element = event.target.closest('button.transaction__remove')
+      if (element) {
+        this.removeTransaction(element.dataset.id)
+      }
+    })
   }
 
   /**
@@ -55,7 +59,18 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-    console.log('removeAccount')
+    if (this.lastOptions) {
+      if (confirm("Вы действительно хотите удалить счет?")) {
+        const id = this.lastOptions.account_id
+        Account.remove({id}, (err, response) => {
+          if(response.success) {
+            this.clear()
+            // App.updateWidgets()
+            App.update()
+          }
+        })
+      }
+    }
   }
 
   /**
@@ -65,7 +80,13 @@ class TransactionsPage {
    * либо обновляйте текущую страницу (метод update) и виджет со счетами
    * */
   removeTransaction(id) {
-
+    if (confirm('Удалить транзакцию?')) {
+      Transaction.remove({id}, (err, response) => {
+        if (response.success) {
+          App.update()
+        }
+      })
+    }
   }
 
   /**
@@ -76,6 +97,7 @@ class TransactionsPage {
    * */
   render(options) {
     if (!options) throw new Error('Не передан options (TransactionsPage.render)')
+    this.clear()
     this.lastOptions = options
     Account.get(options, (err, response) => {
         if (response.success) {
@@ -86,7 +108,6 @@ class TransactionsPage {
     Transaction.list(options, (err, response) => {
       // console.log('Transactions resp', response)
       if (response.success) {
-        this.clear()
         this.renderTransactions(response.data)
       }
     })
@@ -101,7 +122,6 @@ class TransactionsPage {
     this.lastOptions = null
     this.renderTransactions([])
     this.renderTitle('Название счета')
-    console.log('Прошла очистка')
   }
 
   /**
@@ -117,7 +137,7 @@ class TransactionsPage {
    * */
   formatDate(date) {
     const mounts = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
-    date = new Date(date).toLocaleString()
+    date = new Date(date).toLocaleString()    //10.03.2019, 03:20:41
 
     let [dateDate, dateTime] = date.split(', ')
     dateDate = dateDate.split('.')

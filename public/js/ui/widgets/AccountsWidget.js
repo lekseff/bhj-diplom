@@ -17,7 +17,7 @@ class AccountsWidget {
     if (element) {
       this.element = element
       this.registerEvents()
-      this.update()
+      // this.update()
     } else {
       throw new Error('Передан не верный элемент (AccountsWidget)')
     }
@@ -59,7 +59,6 @@ class AccountsWidget {
   update() {
     const currentUser = User.current()
     if (currentUser) {
-      console.log('AccountsWidget Update')
       Account.list(currentUser, (err, response) => {
         if (response && response.success) {
           this.clear()
@@ -97,10 +96,8 @@ class AccountsWidget {
           elem.classList.remove('active')
         }
       })
-    const userId = User.current().id
     const accountId = element.dataset.id
     element.classList.add('active')
-
     App.showPage('transactions', {'account_id': accountId})
   }
 

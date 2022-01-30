@@ -29,7 +29,7 @@ class User {
    * */
   static current() {
     const saveUser = localStorage.getItem('user')
-    console.log('User.current', Boolean(saveUser), saveUser)
+    // console.log('User.current', Boolean(saveUser), saveUser)
     if (saveUser) {
       return JSON.parse(saveUser)
     }
@@ -46,12 +46,12 @@ class User {
       method: 'GET',
       responseType: 'json',
       callback: (err, response) => {
-        if (response.success) {
+        if (response.success && response.user) {
           User.setCurrent(response.user)
         } else {
           User.unsetCurrent()
         }
-        console.log('Ответ fetch:', response)
+        // console.log('Ответ fetch:', response)
         callback(err, response)
       }
     })
@@ -116,6 +116,5 @@ class User {
       }
     })
   }
-
 
 }
