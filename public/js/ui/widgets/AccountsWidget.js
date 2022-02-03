@@ -17,7 +17,6 @@ class AccountsWidget {
     if (element) {
       this.element = element
       this.registerEvents()
-      // this.update()
     } else {
       throw new Error('Передан не верный элемент (AccountsWidget)')
     }

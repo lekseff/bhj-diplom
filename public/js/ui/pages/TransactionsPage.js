@@ -34,14 +34,11 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
-    // console.log('TransactionsPage', this.element)
     this.element.querySelector('.remove-account').addEventListener('click', () => {
-      // console.log('Удалить счет')
       this.removeAccount()
     })
 
     this.element.querySelector('.content').addEventListener('click', (event) => {
-      // console.log('Клик по списку', event.target.closest('button.transaction__remove'))
       const element = event.target.closest('button.transaction__remove')
       if (element) {
         this.removeTransaction(element.dataset.id)
@@ -65,7 +62,6 @@ class TransactionsPage {
         Account.remove({id}, (err, response) => {
           if(response.success) {
             this.clear()
-            // App.updateWidgets()
             App.update()
           }
         })
@@ -106,7 +102,6 @@ class TransactionsPage {
       }
     )
     Transaction.list(options, (err, response) => {
-      // console.log('Transactions resp', response)
       if (response.success) {
         this.renderTransactions(response.data)
       }
@@ -154,7 +149,6 @@ class TransactionsPage {
    * item - объект с информацией о транзакции
    * */
   getTransactionHTML(item) {
-    // console.log('getTransactionHTML(item)', item)
     const date = this.formatDate(item.created_at) //10 марта 2019 г. в 03:20
     const element = document.createElement('div')
     element.className = `transaction transaction_${item.type} row`
